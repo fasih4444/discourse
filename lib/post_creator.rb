@@ -165,7 +165,7 @@ class PostCreator
         if tu&.last_posted_at
           threshold = tu.last_posted_at + @topic.slow_mode_seconds.seconds
 
-          if DateTime.now < threshold
+          if Time.zone.now < threshold
             errors.add(:base, I18n.t(:slow_mode_enabled))
             return false
           end
